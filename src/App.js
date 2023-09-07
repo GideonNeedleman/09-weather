@@ -77,7 +77,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Weather App</h1>
+      <h1>Your Weather</h1>
       <input
         type="text"
         placeholder="Enter location..."
@@ -93,10 +93,40 @@ export default function App() {
 }
 
 function Weather({ weather, location }) {
+  const {
+    temperature_2m_max: max,
+    temperature_2m_min: min,
+    time: dates,
+    weathercode: codes,
+  } = weather;
+  console.log(weather);
   return (
     <div>
-      <h2>Weather {location}</h2>
-      <ul className="weather"></ul>
+      <h2>Forecast for {location}</h2>
+      <ul className="weather">
+        {dates?.map((date, i) => (
+          <Day
+            date={date}
+            max={max.at(i)}
+            min={min.at(i)}
+            code={codes.at(i)}
+            key={date}
+            isToday={i === 0}
+          />
+        ))}
+      </ul>
     </div>
+  );
+}
+
+function Day({ date, max, min, code, isToday }) {
+  return (
+    <li className="day">
+      <span>{getWeatherIcon(code)}</span>
+      <p>{isToday ? "Today" : formatDay(date)}</p>
+      <p>
+        {Math.floor(min)}&deg; &mdash; <strong>{Math.ceil(max)}&deg;</strong>
+      </p>
+    </li>
   );
 }

@@ -75,9 +75,9 @@ input:focus {
 }
 
 .day {
-  background-color: #f0d2ce;
+  background-color: #d8d5db;
   padding: 1.6rem 0 2rem;
-  width: 12.8rem;
+  width: 6rem;
 
   display: flex;
   flex-direction: column;
