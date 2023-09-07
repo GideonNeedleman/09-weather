@@ -76,7 +76,7 @@ export default function App() {
   }, [location]);
 
   return (
-    <div className="App">
+    <div className="app">
       <h1>Your Weather</h1>
       <input
         type="text"

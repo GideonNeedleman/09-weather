@@ -19,33 +19,27 @@ html {
 
 body {
   font-family: "Noto Sans", "Noto Color Emoji", sans-serif;
-  font-size: 2rem;
-  height: 100vh;
+  font-size: 1rem;
   color: #2d3142;
   background-color: #eae8ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .app {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 112rem;
-  gap: 4rem;
+  justify-content: center;
+  /*   gap: 4rem;
   padding: 6rem 0;
   border: 2px solid #2d3142;
   outline: 2px solid #2d3142;
-  outline-offset: 1.2rem;
+  outline-offset: 1.2rem; */
 }
 
 h1 {
-  /* font-weight: 400; */
   text-align: center;
   font-size: 4rem;
-  /* letter-spacing: 2px; */
-  /* word-spacing: 5px; */
   margin-bottom: 1rem;
 }
 
@@ -56,12 +50,15 @@ h2 {
 
 input {
   font-family: inherit;
+  text-align: center;
   color: inherit;
   font-size: 2rem;
   background-color: #b0d7ff;
-  padding: 1.6rem 3.2rem;
+  padding: 1rem;
   border: none;
+  border-radius: 1rem;
   width: 32rem;
+  margin-bottom: 1rem;
 }
 
 input:focus {
@@ -71,23 +68,24 @@ input:focus {
 .weather {
   list-style: none;
   display: flex;
-  gap: 2.4rem;
+  gap: 1.5rem;
 }
 
 .day {
   background-color: #d8d5db;
-  padding: 1.6rem 0 2rem;
+  padding: 1rem 0 1rem;
   width: 6rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   cursor: pointer;
+  border-radius: 1rem;
 }
 
 .day span {
-  font-size: 5.2rem;
+  font-size: 4rem;
 }
 
 .day.important {
