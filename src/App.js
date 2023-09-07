@@ -87,7 +87,9 @@ export default function App() {
 
       {isLoading && <p className="loader">Loading...</p>}
 
-      <Weather weather={weather} location={displayLocation} />
+      {location.length > 2 && (
+        <Weather weather={weather} location={displayLocation} />
+      )}
     </div>
   );
 }
