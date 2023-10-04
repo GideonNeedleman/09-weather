@@ -97,3 +97,33 @@ input:focus {
   font-size: 2.4rem;
   font-weight: 700;
 }
+
+.inputContainer {
+  position: relative;
+}
+
+.btn-more {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 1rem;
+  background-color: #59acff;
+  border: none;
+}
+
+.dropdownMenu {
+  background-color: #b0d7ff;
+  position: absolute;
+  top: 60px;
+  border-radius: 0.5rem;
+  left: 0;
+  right: 0;
+}
+
+.dropdownItem {
+  cursor: pointer;
+  background-color: #cde5fd;
+  margin: 6px;
+}
