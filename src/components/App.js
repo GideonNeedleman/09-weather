@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Weather from "./Weather";
 import { convertToFlag } from "../utils/helpers";
+import Input from "./Input";
+import Title from "./Title";
+import Loader from "./Loader";
 
 export default function App() {
   const [location, setLocation] = useState("");
@@ -50,58 +53,21 @@ export default function App() {
     fetchWeather();
   }, [location]);
 
-  // Select alt location
-  async function onSelect(location) {
-    // set alt to be the new location
-    const { latitude, longitude, timezone, name, country_code } = location;
-    console.log(location);
-    setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
-
-    // fetch weather for this new alt location
-    const weatherRes = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
-    );
-    const weatherData = await weatherRes.json();
-    setWeather(weatherData.daily);
-    setIsVisible(false);
-  }
-
   return (
     <div className="app">
-      <h1>Your Weather</h1>
-      <div className="inputContainer">
-        <input
-          type="text"
-          placeholder="Enter location..."
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        {altLocations.length > 1 && (
-          <button
-            className="btn-more"
-            onClick={() => setIsVisible((prev) => !prev)}
-          >
-            {isVisible ? "less" : "more"}
-          </button>
-        )}
-
-        {isVisible && (
-          <div className="dropdownMenu">
-            {altLocations.map((loc) => (
-              <div
-                value={loc}
-                key={loc.id}
-                onClick={() => onSelect(loc)}
-                className="dropdownItem"
-              >
-                {loc.name}, {loc.admin1}, {loc.country}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      <Title />
+      <Input
+        location={location}
+        setLocation={setLocation}
+        altLocations={altLocations}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        setDisplayLocation={setDisplayLocation}
+        setWeather={setWeather}
+      />
 
       {isLoading && <p className="loader">Loading...</p>}
+      {/* <Loader isLoading={isLoading} /> */}
 
       {location.length > 2 && (
         <Weather weather={weather} location={displayLocation} />
