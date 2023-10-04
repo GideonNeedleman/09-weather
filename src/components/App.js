@@ -10,6 +10,7 @@ export default function App() {
   const [altLocations, setAltLocations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(true);
   const [displayLocation, setDisplayLocation] = useState("");
   const [weather, setWeather] = useState({});
 
@@ -55,7 +56,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Title />
+      <Title isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
       <Input
         location={location}
         setLocation={setLocation}
@@ -66,12 +67,13 @@ export default function App() {
         setWeather={setWeather}
       />
 
-      {isLoading && <p className="loader">Loading...</p>}
-      {/* <Loader isLoading={isLoading} /> */}
+      <Loader isLoading={isLoading} />
 
-      {location.length > 2 && (
-        <Weather weather={weather} location={displayLocation} />
-      )}
+      <Weather
+        weather={weather}
+        location={displayLocation}
+        isCelsius={isCelsius}
+      />
     </div>
   );
 }

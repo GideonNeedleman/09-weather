@@ -1,4 +1,4 @@
-function Loader(isLoading) {
+function Loader({ isLoading }) {
   return <>{isLoading && <p className="loader">Loading...</p>}</>;
 }
 

@@ -1,0 +1,39 @@
+/*Style 13*/
+
+.toggler-wrapper.style-13
+  input[type="checkbox"]:checked
+  + .toggler-slider
+  .toggler-knob {
+  left: calc(100% - 19px - 3px);
+}
+
+.toggler-wrapper.style-13
+  input[type="checkbox"]:checked
+  + .toggler-slider
+  .toggler-knob:after {
+  content: "On";
+}
+
+.toggler-wrapper.style-13 .toggler-knob {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 6px rgba(153, 153, 153, 0.75);
+  box-shadow: 0 2px 6px rgba(153, 153, 153, 0.75);
+}
+
+.toggler-wrapper.style-13 .toggler-knob:after {
+  content: "Off";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 65%;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+}
