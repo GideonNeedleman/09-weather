@@ -8,6 +8,7 @@ import Loader from "./Loader";
 export default function App() {
   const [location, setLocation] = useState("");
   const [altLocations, setAltLocations] = useState([]);
+  const [savedLocations, setSavedLocations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isCelsius, setIsCelsius] = useState(true);
@@ -31,12 +32,16 @@ export default function App() {
 
         if (!geoData.results) throw new Error("Location not found");
 
-        const { latitude, longitude, timezone, name, country_code } =
+        const { latitude, longitude, timezone, name, country_code, admin1 } =
           geoData.results.at(0);
 
         setAltLocations(geoData.results);
 
-        setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
+        admin1
+          ? setDisplayLocation(
+              `${name} ${admin1} ${convertToFlag(country_code)}`
+            )
+          : setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
 
         // 2) Getting actual weather
         const weatherRes = await fetch(

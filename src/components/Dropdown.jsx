@@ -8,9 +8,12 @@ function Dropdown({
 }) {
   async function onSelect(location) {
     // set alt to be the new location
-    const { latitude, longitude, timezone, name, country_code } = location;
+    const { latitude, longitude, timezone, name, country_code, admin1 } =
+      location;
     console.log(location);
-    setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
+    admin1
+      ? setDisplayLocation(`${name} ${admin1} ${convertToFlag(country_code)}`)
+      : setDisplayLocation(`${name} ${convertToFlag(country_code)}`);
 
     // fetch weather for this new alt location
     try {

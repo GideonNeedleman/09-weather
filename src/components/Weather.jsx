@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Day from "./Day";
 
 function Weather({ weather, location, isCelsius }) {
+  const [isPinned, setIsPinned] = useState(false);
   const {
     temperature_2m_max: max,
     temperature_2m_min: min,
@@ -12,6 +14,17 @@ function Weather({ weather, location, isCelsius }) {
     <>
       {location.length > 2 && (
         <div>
+          <div className="pin">
+            <input
+              type="checkbox"
+              name="pin"
+              id="pin"
+              checked={isPinned}
+              value={isPinned}
+              onChange={() => setIsPinned((prev) => !prev)}
+            />
+            <label htmlFor="pin">pin</label>
+          </div>
           <h2>Forecast for {location}</h2>
           <ul className="weather">
             {dates?.map((date, i) => (
