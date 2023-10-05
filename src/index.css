@@ -130,7 +130,13 @@ input:focus {
   margin: 6px;
 }
 
-#pin {
+.pin {
+  /* text-align: right; */
+  position: relative;
+  top: 5rem;
+}
+
+.checkbox {
   width: 1rem;
 }
 #degrees {
@@ -205,3 +211,7 @@ input:focus {
 }
 
 /* end toggle switch */
+
+.savedLocations {
+  overflow: auto;
+}

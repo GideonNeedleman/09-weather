@@ -8,10 +8,12 @@ Displays weather info for a location by fetching data from an API. You can add a
    1. ~~fetchLocation inside App.js useEffect will return array of geocoded locations. (currently this is altLocations)~~
    2. ~~By default the first item in this array will be sent to Weather component. Weather component will fetchWeather and render for this location.~~
    3. ~~Different, alternate locations can be chosen instead by selecting from dropdown menu.~~
-   4. If you pin the location inside Weather component then location gets saved to savedLocations array and also localStorage. This removes the default Weather component by clearing location data, resetting input field. But saved locations are still visible as Weather components are mapped out in App.js using savedLocations array.
-   5. Unpinning a savedLocation will remove it from savedLocations & localStorage & remove rendered Weather component for it.
-   6. When pinning a location, should run check to ensure it's not already pinned to savedLocations.
+   4. ~~If you pin the location inside Weather component then location gets saved to savedLocations array and also localStorage. This removes the default Weather component by clearing location data, resetting input field. But saved locations are still visible as Weather components are mapped out in App.js using savedLocations array.~~
+   5. ~~Unpinning a savedLocation will remove it from savedLocations & localStorage & remove rendered Weather component for it.~~
+   6. ~~When pinning a location, should run check to ensure it's not already pinned to savedLocations.~~
 2. ~~It's not loading correctly from localStorage. Issue is not loading from localStorage on reload, so savedLocations is [] and this causes useEffect to set localStorage to [].~~
+3. Fix: when saved locations list is too long, page doesn't scroll
+4. Refactor code with useReducer instead of useState, but no context.
 
 ## Future improvements
 

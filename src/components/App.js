@@ -78,15 +78,17 @@ export default function App() {
       )}
 
       {/* Saved locations */}
-      {savedLocations.map((location) => (
-        <Weather
-          chosenLocation={location}
-          isCelsius={isCelsius}
-          savedLocations={savedLocations}
-          setSavedLocations={setSavedLocations}
-          key={location.id}
-        />
-      ))}
+      <div className="savedLocations">
+        {savedLocations.map((location) => (
+          <Weather
+            chosenLocation={location}
+            isCelsius={isCelsius}
+            savedLocations={savedLocations}
+            setSavedLocations={setSavedLocations}
+            key={location.id}
+          />
+        ))}
+      </div>
     </div>
   );
 }

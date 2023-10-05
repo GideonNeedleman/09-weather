@@ -13,6 +13,8 @@ function Input({
       <input
         type="text"
         placeholder="Enter location..."
+        name="query input"
+        id="query input"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
