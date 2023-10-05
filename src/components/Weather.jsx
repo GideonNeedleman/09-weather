@@ -18,18 +18,22 @@ function Weather({
     weathercode: codes,
   } = weather;
 
-  /*   chosenLocation.admin1
-    ? setDisplayName(
-        `${chosenLocation.name} ${chosenLocation.admin1} ${convertToFlag(
-          chosenLocation.country_code
-        )}`
-      )
-    : setDisplayName(
-        `${chosenLocation.name} ${convertToFlag(chosenLocation.country_code)}`
-      ); */
+  console.log("Weather Data", weather);
 
-  console.log(weather);
+  // set displayName
+  useEffect(() => {
+    chosenLocation.admin1
+      ? setDisplayName(
+          `${chosenLocation.name} ${chosenLocation.admin1} ${convertToFlag(
+            chosenLocation.country_code
+          )}`
+        )
+      : setDisplayName(
+          `${chosenLocation.name} ${convertToFlag(chosenLocation.country_code)}`
+        );
+  }, [chosenLocation]);
 
+  // fetchWeather
   useEffect(() => {
     async function fetchWeather() {
       const { latitude, longitude, timezone } = chosenLocation;

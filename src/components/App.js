@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Weather from "./Weather";
-import { convertToFlag } from "../utils/helpers";
 import Input from "./Input";
 import Title from "./Title";
 import Loader from "./Loader";
@@ -30,7 +29,7 @@ export default function App() {
           `https://geocoding-api.open-meteo.com/v1/search?name=${query}`
         );
         const geoData = await geoRes.json();
-        console.log(geoData);
+        console.log("results: ", geoData.results);
 
         if (!geoData.results) throw new Error("Location not found");
 
@@ -53,7 +52,7 @@ export default function App() {
     localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
   }, [savedLocations]);
 
-  console.log(chosenLocation);
+  console.log("Chosen Location: ", chosenLocation);
 
   return (
     <div className="app">
