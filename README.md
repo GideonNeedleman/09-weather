@@ -5,12 +5,13 @@ Displays weather info for a location by fetching data from an API. You can add a
 ## To do
 
 1. Reorganize code: save actual chosen location in App.js, then have Weather component lookup weather & display it. Break the weather lookup and displayLocation out of geocoding useEffect. Put fetchWeather inside weather component.
-   1. fetchLocation inside App.js useEffect will return array of geocoded locations. (currently this is altLocations)
-   2. By default the first item in this array will be sent to Weather component. Weather component will fetchWeather and render for this location.
-   3. Different, alternate locations can be chosen instead by selecting from dropdown menu.
+   1. ~~fetchLocation inside App.js useEffect will return array of geocoded locations. (currently this is altLocations)~~
+   2. ~~By default the first item in this array will be sent to Weather component. Weather component will fetchWeather and render for this location.~~
+   3. ~~Different, alternate locations can be chosen instead by selecting from dropdown menu.~~
    4. If you pin the location inside Weather component then location gets saved to savedLocations array and also localStorage. This removes the default Weather component by clearing location data, resetting input field. But saved locations are still visible as Weather components are mapped out in App.js using savedLocations array.
    5. Unpinning a savedLocation will remove it from savedLocations & localStorage & remove rendered Weather component for it.
    6. When pinning a location, should run check to ensure it's not already pinned to savedLocations.
+2. It's not loading correctly from localStorage
 
 ## Future improvements
 

@@ -4,13 +4,14 @@ import { convertToFlag } from "../utils/helpers";
 
 function Weather({
   chosenLocation,
+  setChosenLocation,
   isCelsius,
   savedLocations,
   setSavedLocations,
 }) {
   const [weather, setWeather] = useState({});
   const [displayName, setDisplayName] = useState("");
-  const [isPinned, setIsPinned] = useState(false);
+  const [isPinned, setIsPinned] = useState("");
   const {
     temperature_2m_max: max,
     temperature_2m_min: min,
@@ -19,6 +20,14 @@ function Weather({
   } = weather;
 
   console.log("Weather Data", weather);
+  console.log("saved locations: ", savedLocations);
+
+  // check isPinned
+  useEffect(() => {
+    savedLocations.map((el) => el.id).includes(chosenLocation.id)
+      ? setIsPinned(true)
+      : setIsPinned(false);
+  }, [chosenLocation, savedLocations]);
 
   // set displayName
   useEffect(() => {
@@ -50,12 +59,26 @@ function Weather({
     fetchWeather();
   }, [chosenLocation]);
 
+  function pin() {
+    if (savedLocations.includes(chosenLocation)) {
+      alert("Location already pinned");
+      setChosenLocation({});
+      return;
+    }
+    setSavedLocations([...savedLocations, chosenLocation]);
+    setChosenLocation({});
+  }
+
+  function unPin() {
+    savedLocations.length === 1
+      ? setSavedLocations([])
+      : setSavedLocations([
+          ...savedLocations.filter((el) => el.id !== chosenLocation.id),
+        ]);
+  }
+
   function handlePin() {
-    !isPinned
-      ? setSavedLocations(chosenLocation)
-      : setSavedLocations(
-          ...savedLocations.filter((el) => el.id !== chosenLocation.id)
-        );
+    !isPinned ? pin() : unPin();
     setIsPinned((prev) => !prev);
   }
   return (

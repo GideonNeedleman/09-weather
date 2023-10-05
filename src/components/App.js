@@ -9,7 +9,7 @@ export default function App() {
   const [results, setResults] = useState([]);
   const [chosenLocation, setChosenLocation] = useState({});
   const [savedLocations, setSavedLocations] = useState([], () => {
-    const storedValue = localStorage.getItem("favorites");
+    const storedValue = localStorage.getItem("savedLocations");
     return storedValue ? { savedLocations: JSON.parse(storedValue) } : [];
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -69,6 +69,7 @@ export default function App() {
       {chosenLocation.id && (
         <Weather
           chosenLocation={chosenLocation}
+          setChosenLocation={setChosenLocation}
           isCelsius={isCelsius}
           savedLocations={savedLocations}
           setSavedLocations={setSavedLocations}
