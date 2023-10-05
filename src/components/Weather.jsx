@@ -1,7 +1,14 @@
 import { useState } from "react";
 import Day from "./Day";
 
-function Weather({ weather, location, isCelsius }) {
+function Weather({
+  weather,
+  displayLocation,
+  location,
+  isCelsius,
+  savedLocations,
+  setSavedLocations,
+}) {
   const [isPinned, setIsPinned] = useState(false);
   const {
     temperature_2m_max: max,
@@ -10,9 +17,18 @@ function Weather({ weather, location, isCelsius }) {
     weathercode: codes,
   } = weather;
   console.log(weather);
+
+  function handlePin() {
+    !isPinned
+      ? setSavedLocations(location)
+      : setSavedLocations(
+          ...savedLocations.filter((el) => el.id !== location.id)
+        );
+    setIsPinned((prev) => !prev);
+  }
   return (
     <>
-      {location.length > 2 && (
+      {displayLocation.length > 2 && (
         <div>
           <div className="pin">
             <input
@@ -21,11 +37,11 @@ function Weather({ weather, location, isCelsius }) {
               id="pin"
               checked={isPinned}
               value={isPinned}
-              onChange={() => setIsPinned((prev) => !prev)}
+              onChange={handlePin}
             />
             <label htmlFor="pin">pin</label>
           </div>
-          <h2>Forecast for {location}</h2>
+          <h2>Forecast for {displayLocation}</h2>
           <ul className="weather">
             {dates?.map((date, i) => (
               <Day

@@ -8,7 +8,10 @@ import Loader from "./Loader";
 export default function App() {
   const [location, setLocation] = useState("");
   const [altLocations, setAltLocations] = useState([]);
-  const [savedLocations, setSavedLocations] = useState([]);
+  const [savedLocations, setSavedLocations] = useState([], () => {
+    const storedValue = localStorage.getItem("favorites");
+    return storedValue ? { savedLocations: JSON.parse(storedValue) } : [];
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isCelsius, setIsCelsius] = useState(true);
@@ -59,6 +62,11 @@ export default function App() {
     fetchWeather();
   }, [location]);
 
+  // useEffect to save savedLocations to localStorage
+  useEffect(() => {
+    localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
+  }, [savedLocations]);
+
   return (
     <div className="app">
       <Title isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
@@ -76,8 +84,11 @@ export default function App() {
 
       <Weather
         weather={weather}
-        location={displayLocation}
+        displayLocation={displayLocation}
+        location={location}
         isCelsius={isCelsius}
+        savedLocations={savedLocations}
+        setSavedLocations={setSavedLocations}
       />
     </div>
   );
