@@ -8,10 +8,9 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [chosenLocation, setChosenLocation] = useState({});
-  const [savedLocations, setSavedLocations] = useState([], () => {
-    const storedValue = localStorage.getItem("savedLocations");
-    return storedValue ? { savedLocations: JSON.parse(storedValue) } : [];
-  });
+  const [savedLocations, setSavedLocations] = useState(
+    JSON.parse(localStorage.getItem("savedLocations")) || []
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isCelsius, setIsCelsius] = useState(true);
@@ -50,9 +49,11 @@ export default function App() {
   // store savedLocations to localStorage
   useEffect(() => {
     localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
+    console.log(savedLocations);
   }, [savedLocations]);
 
   console.log("Chosen Location: ", chosenLocation);
+  console.log("saved locations: ", savedLocations);
 
   return (
     <div className="app">

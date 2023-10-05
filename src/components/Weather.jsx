@@ -20,7 +20,6 @@ function Weather({
   } = weather;
 
   console.log("Weather Data", weather);
-  console.log("saved locations: ", savedLocations);
 
   // check isPinned
   useEffect(() => {

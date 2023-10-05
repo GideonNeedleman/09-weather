@@ -11,7 +11,7 @@ Displays weather info for a location by fetching data from an API. You can add a
    4. If you pin the location inside Weather component then location gets saved to savedLocations array and also localStorage. This removes the default Weather component by clearing location data, resetting input field. But saved locations are still visible as Weather components are mapped out in App.js using savedLocations array.
    5. Unpinning a savedLocation will remove it from savedLocations & localStorage & remove rendered Weather component for it.
    6. When pinning a location, should run check to ensure it's not already pinned to savedLocations.
-2. It's not loading correctly from localStorage
+2. ~~It's not loading correctly from localStorage. Issue is not loading from localStorage on reload, so savedLocations is [] and this causes useEffect to set localStorage to [].~~
 
 ## Future improvements
 
