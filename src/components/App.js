@@ -76,6 +76,17 @@ export default function App() {
           setSavedLocations={setSavedLocations}
         />
       )}
+
+      {/* Saved locations */}
+      {savedLocations.map((location) => (
+        <Weather
+          chosenLocation={location}
+          isCelsius={isCelsius}
+          savedLocations={savedLocations}
+          setSavedLocations={setSavedLocations}
+          key={location.id}
+        />
+      ))}
     </div>
   );
 }
