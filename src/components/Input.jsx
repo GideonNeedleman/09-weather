@@ -1,23 +1,22 @@
 import Dropdown from "./Dropdown";
 
 function Input({
-  location,
-  setLocation,
-  altLocations,
+  query,
+  setQuery,
+  results,
   isVisible,
   setIsVisible,
-  setDisplayLocation,
-  setWeather,
+  setChosenLocation,
 }) {
   return (
     <div className="inputContainer">
       <input
         type="text"
         placeholder="Enter location..."
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
-      {altLocations.length > 1 && (
+      {results.length > 1 && (
         <button
           className="btn-more"
           onClick={() => setIsVisible((prev) => !prev)}
@@ -27,9 +26,8 @@ function Input({
       )}
       {isVisible && (
         <Dropdown
-          altLocations={altLocations}
-          setDisplayLocation={setDisplayLocation}
-          setWeather={setWeather}
+          results={results}
+          setChosenLocation={setChosenLocation}
           setIsVisible={setIsVisible}
         />
       )}

@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Day from "./Day";
+import { convertToFlag } from "../utils/helpers";
 
 function Weather({
-  weather,
-  displayLocation,
-  location,
+  chosenLocation,
   isCelsius,
   savedLocations,
   setSavedLocations,
 }) {
+  const [weather, setWeather] = useState({});
+  const [displayName, setDisplayName] = useState("");
   const [isPinned, setIsPinned] = useState(false);
   const {
     temperature_2m_max: max,
@@ -16,19 +17,46 @@ function Weather({
     time: dates,
     weathercode: codes,
   } = weather;
+
+  /*   chosenLocation.admin1
+    ? setDisplayName(
+        `${chosenLocation.name} ${chosenLocation.admin1} ${convertToFlag(
+          chosenLocation.country_code
+        )}`
+      )
+    : setDisplayName(
+        `${chosenLocation.name} ${convertToFlag(chosenLocation.country_code)}`
+      ); */
+
   console.log(weather);
+
+  useEffect(() => {
+    async function fetchWeather() {
+      const { latitude, longitude, timezone } = chosenLocation;
+      try {
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
+        );
+        const weatherData = await weatherRes.json();
+        setWeather(weatherData.daily);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchWeather();
+  }, [chosenLocation]);
 
   function handlePin() {
     !isPinned
-      ? setSavedLocations(location)
+      ? setSavedLocations(chosenLocation)
       : setSavedLocations(
-          ...savedLocations.filter((el) => el.id !== location.id)
+          ...savedLocations.filter((el) => el.id !== chosenLocation.id)
         );
     setIsPinned((prev) => !prev);
   }
   return (
     <>
-      {displayLocation.length > 2 && (
+      {displayName.length > 2 && (
         <div>
           <div className="pin">
             <input
@@ -41,7 +69,7 @@ function Weather({
             />
             <label htmlFor="pin">pin</label>
           </div>
-          <h2>Forecast for {displayLocation}</h2>
+          <h2>Forecast for {displayName}</h2>
           <ul className="weather">
             {dates?.map((date, i) => (
               <Day
