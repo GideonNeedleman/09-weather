@@ -47,7 +47,8 @@ body {
 
 h2 {
   text-align: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 1.25rem;
 }
 
 input {
@@ -69,6 +70,7 @@ input:focus {
 
 .weather-container {
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .weather {
@@ -83,7 +85,7 @@ input:focus {
 .day {
   background-color: #d8d5db;
   padding: 0.25rem 2rem 0.25rem;
-  width: 100%;
+  width: 22rem;
 
   display: flex;
   flex-direction: row;
@@ -147,7 +149,8 @@ input:focus {
 
 .pin {
   position: relative;
-  top: 4rem;
+  margin-bottom: 0.5rem;
+  /* top: 3.5rem; */
 }
 
 .checkbox {
@@ -169,6 +172,30 @@ header {
   margin-bottom: 1rem;
 }
 
+.hourly-modal .modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*   width: 100vw;
+  height: 100vh; */
+  z-index: 100;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.582);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  max-width: 25rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+}
+
 @media screen and (min-width: 500px) {
   input {
     width: 28rem;
@@ -176,6 +203,10 @@ header {
 
   .day {
     width: 25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 }
 

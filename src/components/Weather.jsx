@@ -85,6 +85,7 @@ function Weather({
     <>
       {displayName.length > 2 && (
         <div className="weather-container">
+          <h2>Forecast for {displayName}</h2>
           <div className="pin">
             <Pin
               id={chosenLocation.id}
@@ -92,7 +93,6 @@ function Weather({
               handlePin={handlePin}
             />
           </div>
-          <h2>Forecast for {displayName}</h2>
           <ul className="weather">
             {dates?.map((date, i) => (
               <Day
@@ -103,6 +103,7 @@ function Weather({
                 key={date}
                 isToday={i === 0}
                 isCelsius={isCelsius}
+                chosenLocation={chosenLocation}
               />
             ))}
           </ul>

@@ -24,9 +24,9 @@ function convertToFlag(countryCode) {
   return String.fromCodePoint(...codePoints);
 }
 
-function formatDay(dateStr) {
+function formatDay(dateStr, length) {
   return new Intl.DateTimeFormat("en", {
-    weekday: "short",
+    weekday: length,
   }).format(new Date(dateStr));
 }
 
