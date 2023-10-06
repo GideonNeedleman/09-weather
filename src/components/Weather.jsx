@@ -33,7 +33,7 @@ function Weather({
   useEffect(() => {
     chosenLocation.admin1
       ? setDisplayName(
-          `${chosenLocation.name} ${chosenLocation.admin1} ${convertToFlag(
+          `${chosenLocation.name}, ${chosenLocation.admin1} ${convertToFlag(
             chosenLocation.country_code
           )}`
         )

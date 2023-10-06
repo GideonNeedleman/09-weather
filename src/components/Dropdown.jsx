@@ -11,7 +11,15 @@ function Dropdown({ results, setChosenLocation, setIsVisible }) {
           }}
           className="dropdownItem"
         >
-          {location.name}, {location.admin1}, {location.country}
+          {location.admin1 ? (
+            <span>
+              {location.name}, {location.admin1}, {location.country}
+            </span>
+          ) : (
+            <span>
+              {location.name}, {location.country}
+            </span>
+          )}
         </div>
       ))}
     </div>
