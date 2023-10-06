@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Day from "./Day";
 import { convertToFlag } from "../utils/helpers";
+import Pin from "./Pin";
 
 function Weather({
   chosenLocation,
@@ -85,6 +86,7 @@ function Weather({
       {displayName.length > 2 && (
         <div className="weather-container">
           <div className="pin">
+            <Pin />
             <input
               className="checkbox"
               type="checkbox"
