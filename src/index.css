@@ -149,74 +149,10 @@ input:focus {
   width: 1rem;
 }
 
-.switch {
-  text-align: right;
+header {
+  margin-top: 1rem;
+  width: 512px;
 }
-
-/* Toggle Switch */
-
-.toggle-switch {
-  border: 1px solid;
-  border-radius: 100px;
-  display: flex;
-  gap: 10px;
-  padding: 4px;
-  position: relative;
-  width: 64px;
-}
-
-.toggle-switch .frame {
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 19px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 24px;
-  justify-content: center;
-  padding: 10px;
-  position: relative;
-  width: 24px;
-}
-
-.toggle-switch .f {
-  color: #000000;
-  font-family: "Lato", Helvetica;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-bottom: -6.5px;
-  margin-top: -8.5px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.toggle-switch.celsius {
-  align-items: center;
-  background-color: #25b1b9;
-  border-color: #31e7f3;
-  justify-content: flex-end;
-}
-
-.toggle-switch.farenheit {
-  align-items: flex-start;
-  background-color: #cf8f44;
-  border-color: #ffb35a;
-}
-
-.toggle-switch.celsius .f {
-  margin-left: -7px;
-  margin-right: -7px;
-}
-
-.toggle-switch.farenheit .f {
-  margin-left: -6px;
-  margin-right: -6px;
-}
-
-/* end toggle switch */
 
 .savedLocations {
   overflow: auto;
