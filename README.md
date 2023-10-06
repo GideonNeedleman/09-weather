@@ -24,7 +24,7 @@ Displays weather info for a location by fetching data from an API. You can add a
 4. Store theme colors in CSS variables & improve theme.
    1. Implement dark/light theme options
 5. ~~Restyle buttons & checkmarks~~
-6. Display daily weather on hover over Day
+6. **Display daily weather on hover over Day**
 7. ~~Make styling reactive~~
    ~~1. Change Day cards to vertical when screen shrinks. Phone rotation will show both views.~~
 8. ~~Close dropdown on type query input~~
