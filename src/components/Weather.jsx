@@ -91,16 +91,6 @@ function Weather({
               isPinned={isPinned}
               handlePin={handlePin}
             />
-            {/*             <input
-              className="checkbox"
-              type="checkbox"
-              name="pin"
-              id={`pin-${chosenLocation.id}`}
-              checked={isPinned}
-              value={isPinned}
-              onChange={handlePin}
-            />
-            <label htmlFor={`pin-${chosenLocation.id}`}>Save location</label> */}
           </div>
           <h2>Forecast for {displayName}</h2>
           <ul className="weather">

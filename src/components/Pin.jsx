@@ -3,7 +3,7 @@ import "./Pin.css";
 // need to set id from props
 function Pin({ id, isPinned, handlePin }) {
   return (
-    <div class="checkbox-wrapper-8">
+    <div className="checkbox-wrapper-8">
       <input
         className="tgl tgl-skewed"
         id={`pin-${id}`}
@@ -14,7 +14,7 @@ function Pin({ id, isPinned, handlePin }) {
         onChange={handlePin}
       />
       <label
-        class="tgl-btn"
+        className="tgl-btn"
         data-tg-off="SAVE"
         data-tg-on="SAVED"
         htmlFor={`pin-${id}`}

@@ -2,19 +2,19 @@ import "./ToggleSwitch.css";
 
 function ToggleSwitch({ isCelsius, setIsCelsius }) {
   return (
-    <div class="toggle-button-cover">
-      <div class="button r" id="button-1">
+    <div className="toggle-button-cover">
+      <div className="button r" id="button-1">
         <input
           type="checkbox"
-          class="cbox"
+          className="cbox"
           checked={isCelsius}
-          onClick={() => {
+          onChange={() => {
             localStorage.setItem("isCelsius", JSON.stringify(!isCelsius));
             setIsCelsius((prev) => !prev);
           }}
         />
-        <div class="knobs"></div>
-        <div class="layer"></div>
+        <div className="knobs"></div>
+        <div className="layer"></div>
       </div>
     </div>
   );
