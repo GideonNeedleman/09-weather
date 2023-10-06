@@ -15,9 +15,9 @@ B0D7FF */
   box-sizing: border-box;
 }
 
-html {
-  /* font-size: 62.5%; */
-}
+/* html {
+  font-size: 62.5%;
+} */
 
 body {
   font-family: "Noto Sans", "Noto Color Emoji", sans-serif;
@@ -133,8 +133,14 @@ input:focus {
 
 .dropdownItem {
   cursor: pointer;
-  background-color: #cde5fd;
-  margin: 6px;
+  /* background-color: #ffffff99; */
+  padding: 0.25rem;
+  box-shadow: inset 0px 2px 5px 6px rgba(255, 255, 255, 0.151);
+}
+
+.dropdownItem:hover {
+  color: #1b00b3;
+  font-weight: bold;
 }
 
 .pin {
