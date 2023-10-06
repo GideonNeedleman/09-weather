@@ -52,7 +52,7 @@
 
 .layer {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #f4f9ff;
   transition: 0.3s ease all;
   z-index: 1;
 }
@@ -70,7 +70,7 @@
   text-align: center;
   line-height: 1;
   padding: 9px 4px;
-  background-color: #f44336;
+  background-color: #716bbb;
   border-radius: 50%;
   transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
 }
@@ -78,7 +78,7 @@
 #button-1 .cbox:checked + .knobs:before {
   content: "°C";
   left: 40px;
-  background-color: #3639f4;
+  background-color: #459151;
 }
 
 #button-1 .cbox:checked ~ .layer {
