@@ -27,6 +27,7 @@ Displays weather info for a location by fetching data from an API. You can add a
 6. Display daily weather on hover over Day
 7. Make styling reactive
    1. Change Day cards to vertical when screen shrinks. Phone rotation will show both views.
+8. Close dropdown on type query input
 
 ## Future ideas
 

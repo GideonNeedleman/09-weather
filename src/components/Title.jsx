@@ -4,7 +4,7 @@ function Title({ isCelsius, setIsCelsius }) {
   return (
     <header>
       <ToggleSwitch isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
-      <h1>Your Weather</h1>
+      <h1 className="title">Your Weather</h1>
     </header>
   );
 }
