@@ -18,7 +18,7 @@ function Input({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      {results.length > 1 && (
+      {results.length > 1 && query.length > 2 && (
         <button
           className="btn-more"
           onClick={() => setIsVisible((prev) => !prev)}
