@@ -23,7 +23,11 @@ function Input({
           className="btn-more"
           onClick={() => setIsVisible((prev) => !prev)}
         >
-          {isVisible ? "less" : "more"}
+          {isVisible ? (
+            <i class="fa-solid fa-chevron-up"></i>
+          ) : (
+            <i class="fa-solid fa-chevron-down"></i>
+          )}
         </button>
       )}
       {isVisible && (
