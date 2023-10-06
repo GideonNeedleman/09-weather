@@ -16,7 +16,10 @@ function Input({
         name="query input"
         id="query input"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setIsVisible(false);
+        }}
       />
       {results.length > 1 && query.length > 2 && (
         <button

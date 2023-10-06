@@ -168,10 +168,6 @@ header {
 }
 
 @media screen and (min-width: 660px) {
-  /*   header {
-    width: 32rem;
-  } */
-
   input {
     width: 32rem;
     font-size: 2rem;
