@@ -13,7 +13,9 @@ export default function App() {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isCelsius, setIsCelsius] = useState(true);
+  const [isCelsius, setIsCelsius] = useState(
+    JSON.parse(localStorage.getItem("isCelsius")) || false
+  );
 
   // fetchLocation
   useEffect(() => {

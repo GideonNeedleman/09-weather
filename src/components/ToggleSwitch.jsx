@@ -8,7 +8,10 @@ function ToggleSwitch({ isCelsius, setIsCelsius }) {
           type="checkbox"
           class="cbox"
           checked={isCelsius}
-          onClick={() => setIsCelsius((prev) => !prev)}
+          onClick={() => {
+            localStorage.setItem("isCelsius", JSON.stringify(!isCelsius));
+            setIsCelsius((prev) => !prev);
+          }}
         />
         <div class="knobs"></div>
         <div class="layer"></div>
