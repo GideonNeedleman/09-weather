@@ -86,8 +86,12 @@ function Weather({
       {displayName.length > 2 && (
         <div className="weather-container">
           <div className="pin">
-            <Pin />
-            <input
+            <Pin
+              id={chosenLocation.id}
+              isPinned={isPinned}
+              handlePin={handlePin}
+            />
+            {/*             <input
               className="checkbox"
               type="checkbox"
               name="pin"
@@ -96,7 +100,7 @@ function Weather({
               value={isPinned}
               onChange={handlePin}
             />
-            <label htmlFor={`pin-${chosenLocation.id}`}>Save location</label>
+            <label htmlFor={`pin-${chosenLocation.id}`}>Save location</label> */}
           </div>
           <h2>Forecast for {displayName}</h2>
           <ul className="weather">
