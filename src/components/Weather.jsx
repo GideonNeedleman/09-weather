@@ -19,7 +19,7 @@ function Weather({
     weathercode: codes,
   } = weather;
 
-  console.log("Weather Data", weather);
+  // console.log("Weather Data", weather);
 
   // check isPinned
   useEffect(() => {
@@ -83,7 +83,7 @@ function Weather({
   return (
     <>
       {displayName.length > 2 && (
-        <div>
+        <div className="weather-container">
           <div className="pin">
             <input
               className="checkbox"

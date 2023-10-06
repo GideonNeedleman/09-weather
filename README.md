@@ -12,8 +12,9 @@ Displays weather info for a location by fetching data from an API. You can add a
    5. ~~Unpinning a savedLocation will remove it from savedLocations & localStorage & remove rendered Weather component for it.~~
    6. ~~When pinning a location, should run check to ensure it's not already pinned to savedLocations.~~
 2. ~~It's not loading correctly from localStorage. Issue is not loading from localStorage on reload, so savedLocations is [] and this causes useEffect to set localStorage to [].~~
-3. Fix: when saved locations list is too long, page doesn't scroll
+3. ~~Fix: when saved locations list is too long, page doesn't scroll~~
 4. Refactor code with useReducer instead of useState, but no context.
+5. ~~Reverse order when mapping out saved locations so that most recently pinned location stays in place.~~
 
 ## Future improvements
 

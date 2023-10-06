@@ -79,7 +79,7 @@ export default function App() {
 
       {/* Saved locations */}
       <div className="savedLocations">
-        {savedLocations.map((location) => (
+        {savedLocations.toReversed().map((location) => (
           <Weather
             chosenLocation={location}
             isCelsius={isCelsius}
