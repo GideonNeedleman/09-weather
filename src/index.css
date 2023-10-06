@@ -59,8 +59,8 @@ input {
   padding: 1rem;
   border: none;
   border-radius: 1rem;
-  width: 28rem;
-  margin-bottom: 0;
+  width: 22rem;
+  margin-bottom: 1rem;
 }
 
 input:focus {
@@ -68,7 +68,7 @@ input:focus {
 }
 
 .weather-container {
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem;
 }
 
 .weather {
@@ -83,7 +83,7 @@ input:focus {
 .day {
   background-color: #d8d5db;
   padding: 0.25rem 2rem 0.25rem;
-  width: 25rem;
+  width: 100%;
 
   display: flex;
   flex-direction: row;
@@ -161,10 +161,22 @@ header {
   width: 100%;
   margin-top: 1rem;
   padding: 0 2rem 0;
+  max-width: 1024px;
 }
 
 .locations {
   overflow: auto;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 500px) {
+  input {
+    width: 28rem;
+  }
+
+  .day {
+    width: 25rem;
+  }
 }
 
 @media screen and (min-width: 660px) {

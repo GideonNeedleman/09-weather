@@ -1,3 +1,7 @@
+.checkbox-wrapper-8 {
+  margin-left: 1rem;
+}
+
 .checkbox-wrapper-8 .tgl {
   display: none;
 }
@@ -63,6 +67,7 @@
   backface-visibility: hidden;
   transition: all 0.2s ease;
   font-family: sans-serif;
+  font-size: 0.8rem;
   background: #888;
 }
 .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:after,
