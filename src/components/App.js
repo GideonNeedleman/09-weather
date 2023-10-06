@@ -69,23 +69,23 @@ export default function App() {
         setChosenLocation={setChosenLocation}
       />
       <Loader isLoading={isLoading} />
-      {chosenLocation.id &&
-        (savedLocations.map((el) => el.id).includes(chosenLocation.id) ? (
-          <h3 className="existing-location">
-            This location is already saved below
-          </h3>
-        ) : (
-          <Weather
-            chosenLocation={chosenLocation}
-            setChosenLocation={setChosenLocation}
-            isCelsius={isCelsius}
-            savedLocations={savedLocations}
-            setSavedLocations={setSavedLocations}
-          />
-        ))}
 
-      {/* Saved locations */}
-      <div className="savedLocations">
+      <div className="locations">
+        {chosenLocation.id &&
+          (savedLocations.map((el) => el.id).includes(chosenLocation.id) ? (
+            <h3 className="existing-location">
+              This location is already saved below
+            </h3>
+          ) : (
+            <Weather
+              chosenLocation={chosenLocation}
+              setChosenLocation={setChosenLocation}
+              isCelsius={isCelsius}
+              savedLocations={savedLocations}
+              setSavedLocations={setSavedLocations}
+            />
+          ))}
+        {/* Saved locations */}
         {savedLocations.toReversed().map((location) => (
           <Weather
             chosenLocation={location}

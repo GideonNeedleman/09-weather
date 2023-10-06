@@ -160,6 +160,6 @@ header {
   width: 512px;
 }
 
-.savedLocations {
+.locations {
   overflow: auto;
 }
