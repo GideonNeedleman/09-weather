@@ -158,8 +158,9 @@ input:focus {
 }
 
 header {
+  width: 100%;
   margin-top: 1rem;
-  width: 28rem;
+  padding: 0 2rem 0;
 }
 
 .locations {
@@ -167,9 +168,9 @@ header {
 }
 
 @media screen and (min-width: 660px) {
-  header {
+  /*   header {
     width: 32rem;
-  }
+  } */
 
   input {
     width: 32rem;
