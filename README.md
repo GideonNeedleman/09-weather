@@ -25,14 +25,16 @@ Displays weather info for a location by fetching data from an API. You can add a
    1. Implement dark/light theme options
 5. ~~Restyle buttons & checkmarks~~
 6. **Display daily weather on hover over Day**
+   1. Filter out times before current hour if isToday
+   2. Fix hourly weather fetch. Currently only getting today's data.
 7. ~~Make styling reactive~~
    ~~1. Change Day cards to vertical when screen shrinks. Phone rotation will show both views.~~
 8. ~~Close dropdown on type query input~~
 9. ~~Improve mobile UI~~
-   1. ~~input field too wide~~
-   2. ~~bring back input bottom margin~~
-   3. ~~day card a bit too wide~~
-   4. ~~SAVE/SAVED text on pin too big? need more left margin~~
+10. ~~input field too wide~~
+11. ~~bring back input bottom margin~~
+12. ~~day card a bit too wide~~
+13. ~~SAVE/SAVED text on pin too big? need more left margin~~
 
 ## Future ideas
 

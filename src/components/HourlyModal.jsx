@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { formatDay } from "../utils/helpers";
+import Hour from "./Hour";
 
-function HourlyModal({ isToday, date, chosenLocation }) {
+function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
   const [weather, setWeather] = useState({});
   const dayName = isToday ? "Today" : formatDay(date, "long");
+  const { temperature_2m: temp, time, weathercode } = weather;
 
   // fetchWeather
   useEffect(() => {
@@ -27,9 +29,18 @@ function HourlyModal({ isToday, date, chosenLocation }) {
       <div className="modal-overlay">
         <div className="modal-content">
           <h2>{dayName}</h2>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic natus
-          earum atque sapiente a id omnis debitis error optio excepturi officia,
-          officiis qui tempore deserunt autem quasi similique impedit magnam.
+          <ul className="modal-list">
+            {time?.map((hour, i) => (
+              <Hour
+                time={hour}
+                temp={temp.at(i)}
+                weathercode={weathercode.at(i)}
+                isToday={isToday}
+                isCelsius={isCelsius}
+                key={hour}
+              />
+            ))}
+          </ul>
         </div>
       </div>
     </div>

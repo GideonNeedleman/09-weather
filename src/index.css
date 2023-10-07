@@ -193,7 +193,30 @@ header {
   max-width: 25rem;
   background-color: white;
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
+  border-radius: 1rem;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.modal-list li:nth-child(even) {
+  background-color: rgb(255, 236, 210);
+}
+
+.hour-card {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 0 2rem;
+}
+
+.hour-icon {
+  font-size: 2rem;
+}
+
+.hour-temp {
+  font-weight: bold;
 }
 
 @media screen and (min-width: 500px) {

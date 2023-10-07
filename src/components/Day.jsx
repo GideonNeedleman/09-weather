@@ -14,6 +14,7 @@ function Day({ date, max, min, code, isToday, isCelsius, chosenLocation }) {
           isToday={isToday}
           date={date}
           chosenLocation={chosenLocation}
+          isCelsius={isCelsius}
         />
       )}
       <div className="day">
