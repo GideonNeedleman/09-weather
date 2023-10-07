@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { formatDay } from "../utils/helpers";
+import { formatDay, objectSlice } from "../utils/helpers";
 import Hour from "./Hour";
 
 function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
@@ -16,39 +16,25 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
           `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&hourly=weathercode,temperature_2m`
         );
         const weatherData = await weatherRes.json();
-        // need to filter weatherData.hourly to only current date. array.find() first index of matching date, then grab next 24 entries and map out <Hour />
-        setWeather(weatherData.hourly);
-        /*         console.log(weatherData.hourly.time);
-        console.log(date);
-        console.log(weatherData.hourly.time[0].slice(0, 10)); */
         const found = weatherData.hourly.time.findIndex(
           (el) => el.slice(0, 10) === date
         );
-        // console.log(found);
-        const timeslice = weatherData.hourly.time.slice(found, found + 24);
-        const tempslice = weatherData.hourly.temperature_2m.slice(
-          found,
-          found + 24
-        );
-        const codeslice = weatherData.hourly.weathercode.slice(
-          found,
-          found + 24
-        );
-        setWeather({ time: timeslice, temp: tempslice, code: codeslice });
+        // 24 hours per day:
+        setWeather(objectSlice(weatherData.hourly, found, 24));
       } catch (err) {
         console.error(err);
       }
     }
     fetchWeather();
-  }, [chosenLocation]);
-  console.log(weather);
+  }, [chosenLocation, date]);
+
   return (
     <div className="hourly-modal">
       <div className="modal-overlay">
         <div className="modal-content">
           <h2>{dayName}</h2>
           <ul className="modal-list">
-            {/* {time?.map((hour, i) => (
+            {time?.map((hour, i) => (
               <Hour
                 time={hour}
                 temp={temp.at(i)}
@@ -57,7 +43,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
                 isCelsius={isCelsius}
                 key={hour}
               />
-            ))} */}
+            ))}
           </ul>
         </div>
       </div>

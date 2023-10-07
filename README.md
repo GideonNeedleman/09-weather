@@ -26,7 +26,7 @@ Displays weather info for a location by fetching data from an API. You can add a
 5. ~~Restyle buttons & checkmarks~~
 6. **Display daily weather on hover over Day**
    1. Filter out times before current hour if isToday
-   2. Fix hourly weather fetch. Currently only getting today's data.
+   2. ~~Fix hourly weather fetch. Currently only getting today's data.~~
 7. ~~Make styling reactive~~
    ~~1. Change Day cards to vertical when screen shrinks. Phone rotation will show both views.~~
 8. ~~Close dropdown on type query input~~
@@ -35,7 +35,8 @@ Displays weather info for a location by fetching data from an API. You can add a
 11. ~~bring back input bottom margin~~
 12. ~~day card a bit too wide~~
 13. ~~SAVE/SAVED text on pin too big? need more left margin~~
-14. Fix wrong day bug. It thinks we're a day behind. It's because the formatDay helper function thinks the local date string is UTC. That's because we tell the meteo API our timezone, so it gives us local times, but then we feed this to formatDay that thinks it's UTC, so it gets the day of the week wrong. Apparently kludgy solution is to append T00:00 to date string going into formatDay.
+14. ~~Fix wrong day bug. It thinks we're a day behind. It's because the formatDay helper function thinks the local date string is UTC. That's because we tell the meteo API our timezone, so it gives us local times, but then we feed this to formatDay that thinks it's UTC, so it gets the day of the week wrong. Apparently kludgy solution is to append T00:00 to date string going into formatDay.~~
+15. ~~Write generic objectSlice() helper function to slice arbitrary sections from API response object. Should be objectSlice(original_object, starting_index, num_elements). It should return new object with same shape & keys, but with sliced sub-arrays for all the properties. Need to use Object.keys() to iterate over array of all the keys and make the slices.~~
 
 ## Future ideas
 

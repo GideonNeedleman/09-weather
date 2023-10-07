@@ -30,4 +30,13 @@ function formatDay(dateStr, length) {
   }).format(new Date(`${dateStr}T00:00`));
 }
 
-export { getWeatherIcon, convertToFlag, formatDay };
+// slices object with same shape as api.open-meteo.com response. Returned object has same shape with subarrays of length numElements
+function objectSlice(object, start, numElements) {
+  const newObject = {};
+  for (const key in object) {
+    newObject[key] = object[key].slice(start, start + numElements);
+  }
+  return newObject;
+}
+
+export { getWeatherIcon, convertToFlag, formatDay, objectSlice };
