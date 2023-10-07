@@ -35,6 +35,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
           <h2>{dayName}</h2>
           <ul className="modal-list">
             {time?.map((hour, i) => (
+              // if isToday & currentTime >= hour.slice(11) then display. But also need to account for timezone of location in comparison!
               <Hour
                 time={hour}
                 temp={temp.at(i)}
