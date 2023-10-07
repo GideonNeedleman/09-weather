@@ -30,7 +30,6 @@ export default function App() {
           `https://geocoding-api.open-meteo.com/v1/search?name=${query}`
         );
         const geoData = await geoRes.json();
-        console.log("results: ", geoData.results);
 
         if (!geoData.results) throw new Error("Location not found");
 
