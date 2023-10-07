@@ -81,6 +81,9 @@ function Weather({
     !isPinned ? pin() : unPin();
     setIsPinned((prev) => !prev);
   }
+
+  console.log(weather);
+
   return (
     <>
       {displayName.length > 2 && (

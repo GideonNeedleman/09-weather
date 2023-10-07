@@ -27,7 +27,7 @@ function convertToFlag(countryCode) {
 function formatDay(dateStr, length) {
   return new Intl.DateTimeFormat("en", {
     weekday: length,
-  }).format(new Date(dateStr));
+  }).format(new Date(`${dateStr}T00:00`));
 }
 
 export { getWeatherIcon, convertToFlag, formatDay };

@@ -35,6 +35,7 @@ Displays weather info for a location by fetching data from an API. You can add a
 11. ~~bring back input bottom margin~~
 12. ~~day card a bit too wide~~
 13. ~~SAVE/SAVED text on pin too big? need more left margin~~
+14. Fix wrong day bug. It thinks we're a day behind. It's because the formatDay helper function thinks the local date string is UTC. That's because we tell the meteo API our timezone, so it gives us local times, but then we feed this to formatDay that thinks it's UTC, so it gets the day of the week wrong. Apparently kludgy solution is to append T00:00 to date string going into formatDay.
 
 ## Future ideas
 
