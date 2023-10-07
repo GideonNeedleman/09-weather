@@ -82,7 +82,7 @@ function Weather({
     setIsPinned((prev) => !prev);
   }
 
-  console.log(weather);
+  // console.log(weather);
 
   return (
     <>

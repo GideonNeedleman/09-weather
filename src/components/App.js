@@ -51,11 +51,10 @@ export default function App() {
   // store savedLocations to localStorage
   useEffect(() => {
     localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
-    console.log(savedLocations);
   }, [savedLocations]);
 
-  console.log("Chosen Location: ", chosenLocation);
-  console.log("saved locations: ", savedLocations);
+  // console.log("Chosen Location: ", chosenLocation);
+  // console.log("saved locations: ", savedLocations);
 
   return (
     <div className="app">
