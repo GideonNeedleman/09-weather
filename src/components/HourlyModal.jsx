@@ -66,7 +66,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
                   key={hour}
                 />
               ) : (
-                dayjs() <= dayjs.tz(hour, timezone) && (
+                dayjs() <= dayjs.tz(hour, timezone).add(1, "hour") && (
                   <Hour
                     time={hour}
                     temp={temp.at(i)}

@@ -24,9 +24,8 @@ Displays weather info for a location by fetching data from an API. You can add a
 4. Store theme colors in CSS variables & improve theme.
    1. Implement dark/light theme options
 5. ~~Restyle buttons & checkmarks~~
-6. **Display daily weather on hover over Day**
-   1. Filter out times before current hour if isToday
-      new Date() should get current time in UTC. Need to translate location times to UTC then check that location hour >= current time hour to display
+6. ~~**Display daily weather on hover over Day**~~
+   1. ~~Filter out times before current hour if isToday new Date() should get current time in UTC. Need to translate location times to UTC then check that location hour >= current time hour to display~~
    2. ~~Fix hourly weather fetch. Currently only getting today's data.~~
 7. ~~Make styling reactive~~
    ~~1. Change Day cards to vertical when screen shrinks. Phone rotation will show both views.~~
