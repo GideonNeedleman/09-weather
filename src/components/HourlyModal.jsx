@@ -15,7 +15,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
   const [timezone, setTimezone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const dayName = isToday ? "Today" : formatDay(date, "long");
-  const { temperature_2m: temp, time, weathercode } = weather;
+  const { temperature_2m: temp, time, weathercode, is_day } = weather;
 
   // fetchWeather
   useEffect(() => {
@@ -24,7 +24,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
       try {
         setIsLoading(true);
         const weatherRes = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezoneLocal}&hourly=weathercode,temperature_2m`
+          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezoneLocal}&hourly=weathercode,temperature_2m,is_day`
         );
         const weatherData = await weatherRes.json();
         const found = weatherData.hourly.time.findIndex(
@@ -60,6 +60,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
                   time={hour}
                   temp={temp.at(i)}
                   weathercode={weathercode.at(i)}
+                  isDay={is_day.at(i)}
                   isToday={isToday}
                   isCelsius={isCelsius}
                   timezone={timezone}
@@ -71,6 +72,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
                     time={hour}
                     temp={temp.at(i)}
                     weathercode={weathercode.at(i)}
+                    isDay={is_day.at(i)}
                     isToday={isToday}
                     isCelsius={isCelsius}
                     timezone={timezone}
