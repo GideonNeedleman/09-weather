@@ -42,9 +42,6 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
     fetchWeather();
   }, [chosenLocation, date]);
 
-  console.log(new Date());
-  console.log(dayjs());
-
   return (
     <div className="hourly-modal">
       <div className="modal-overlay">

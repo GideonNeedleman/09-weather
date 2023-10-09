@@ -52,7 +52,7 @@ export default function App() {
     localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
   }, [savedLocations]);
 
-  // console.log("Chosen Location: ", chosenLocation);
+  console.log("Chosen Location: ", chosenLocation);
   // console.log("saved locations: ", savedLocations);
 
   return (

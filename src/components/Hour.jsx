@@ -20,14 +20,6 @@ function Hour({
   const tempF = Math.round((temp * 9) / 5 + 32);
   const leadingZero = time.slice(11, 12) === "0";
 
-  console.log(time);
-  console.log(timezone);
-  console.log("here time: ", dayjs().$d);
-  /*   console.log("target time: ", dayjs(time).tz(timezone).$d);
-  console.log("is target > here? ", dayjs(time).tz(timezone) > dayjs()); */
-  console.log("target time: ", dayjs.tz(time, timezone).$d);
-  console.log("is target > here? ", dayjs.tz(time, timezone) > dayjs());
-
   return (
     <li className="hour-card">
       <span className="hour-icon">{getWeatherIcon(weathercode, isDay)}</span>
