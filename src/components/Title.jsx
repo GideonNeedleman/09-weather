@@ -1,9 +1,9 @@
 import ToggleSwitch from "./ToggleSwitch";
 
-function Title({ isCelsius, setIsCelsius }) {
+function Title() {
   return (
     <header>
-      <ToggleSwitch isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
+      <ToggleSwitch />
       <h1 className="title">Your Weather</h1>
     </header>
   );

@@ -10,7 +10,7 @@ var timezone = require("dayjs/plugin/timezone");
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
+function HourlyModal({ isToday, date, location, isCelsius }) {
   const [weather, setWeather] = useState({});
   const [timezone, setTimezone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +20,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
   // fetchWeather
   useEffect(() => {
     async function fetchWeather() {
-      const { latitude, longitude, timezone: timezoneLocal } = chosenLocation;
+      const { latitude, longitude, timezone: timezoneLocal } = location;
       try {
         setIsLoading(true);
         const weatherRes = await fetch(
@@ -40,7 +40,7 @@ function HourlyModal({ isToday, date, chosenLocation, isCelsius }) {
       }
     }
     fetchWeather();
-  }, [chosenLocation, date]);
+  }, [location, date]);
 
   return (
     <div className="hourly-modal">

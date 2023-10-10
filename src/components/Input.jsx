@@ -1,13 +1,9 @@
+import { useWeather } from "../context/WeatherContext";
 import Dropdown from "./Dropdown";
 
-function Input({
-  query,
-  setQuery,
-  results,
-  isVisible,
-  setIsVisible,
-  setChosenLocation,
-}) {
+function Input() {
+  const { query, results, isVisible, dispatch } = useWeather();
+
   return (
     <div className="inputContainer">
       <input
@@ -16,15 +12,14 @@ function Input({
         name="query input"
         id="query input"
         value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setIsVisible(false);
-        }}
+        onChange={(e) =>
+          dispatch({ type: "query/change", payload: e.target.value })
+        }
       />
       {results.length > 1 && query.length > 2 && (
         <button
           className="btn-more"
-          onClick={() => setIsVisible((prev) => !prev)}
+          onClick={() => dispatch({ type: "dropdown/toggle" })}
         >
           {isVisible ? (
             <i className="fa-solid fa-chevron-up"></i>
@@ -33,13 +28,7 @@ function Input({
           )}
         </button>
       )}
-      {isVisible && (
-        <Dropdown
-          results={results}
-          setChosenLocation={setChosenLocation}
-          setIsVisible={setIsVisible}
-        />
-      )}
+      {isVisible && <Dropdown />}
     </div>
   );
 }

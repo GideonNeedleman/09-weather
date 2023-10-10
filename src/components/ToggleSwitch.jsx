@@ -1,6 +1,9 @@
+import { useWeather } from "../context/WeatherContext";
 import "./ToggleSwitch.css";
 
-function ToggleSwitch({ isCelsius, setIsCelsius }) {
+function ToggleSwitch() {
+  const { isCelsius, dispatch } = useWeather();
+
   return (
     <div className="toggle-button-cover">
       <div className="button r" id="button-1">
@@ -8,10 +11,7 @@ function ToggleSwitch({ isCelsius, setIsCelsius }) {
           type="checkbox"
           className="cbox"
           checked={isCelsius}
-          onChange={() => {
-            localStorage.setItem("isCelsius", JSON.stringify(!isCelsius));
-            setIsCelsius((prev) => !prev);
-          }}
+          onChange={() => dispatch({ type: "celsius/toggle" })}
         />
         <div className="knobs"></div>
         <div className="layer"></div>

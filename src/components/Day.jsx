@@ -2,7 +2,7 @@ import { useState } from "react";
 import { formatDay, getWeatherIcon } from "../utils/helpers";
 import HourlyModal from "./HourlyModal";
 
-function Day({ date, max, min, code, isToday, isCelsius, chosenLocation }) {
+function Day({ date, max, min, code, isToday, isCelsius, location }) {
   const minF = (min * 9) / 5 + 32;
   const maxF = (max * 9) / 5 + 32;
   const [openModal, setOpenModal] = useState(false);
@@ -13,7 +13,7 @@ function Day({ date, max, min, code, isToday, isCelsius, chosenLocation }) {
         <HourlyModal
           isToday={isToday}
           date={date}
-          chosenLocation={chosenLocation}
+          location={location}
           isCelsius={isCelsius}
         />
       )}

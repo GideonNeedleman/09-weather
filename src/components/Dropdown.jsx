@@ -1,14 +1,15 @@
-function Dropdown({ results, setChosenLocation, setIsVisible }) {
+import { useWeather } from "../context/WeatherContext";
+
+function Dropdown() {
+  const { results, dispatch } = useWeather();
+
   return (
     <div className="dropdownMenu">
       {results.map((location) => (
         <div
           value={location}
           key={location.id}
-          onClick={() => {
-            setChosenLocation(location);
-            setIsVisible(false);
-          }}
+          onClick={() => dispatch({ type: "location/set", payload: location })}
           className="dropdownItem"
         >
           {location.admin1 ? (

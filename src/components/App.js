@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import Weather from "./Weather";
+import { WeatherProvider } from "../context/WeatherContext";
 import Input from "./Input";
 import Title from "./Title";
 import Loader from "./Loader";
+import Locations from "./Locations";
 
 export default function App() {
-  const [query, setQuery] = useState("");
+  /*   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [chosenLocation, setChosenLocation] = useState({});
   const [savedLocations, setSavedLocations] = useState(
@@ -15,10 +15,10 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [isCelsius, setIsCelsius] = useState(
     JSON.parse(localStorage.getItem("isCelsius")) || false
-  );
+  ); */
 
   // fetchLocation
-  useEffect(() => {
+  /*   useEffect(() => {
     const fetchLocation = async () => {
       if (query.length <= 2) return;
 
@@ -45,55 +45,24 @@ export default function App() {
     };
 
     fetchLocation();
-  }, [query]);
+  }, [query]); */
 
   // store savedLocations to localStorage
-  useEffect(() => {
+  /*   useEffect(() => {
     localStorage.setItem("savedLocations", JSON.stringify(savedLocations));
-  }, [savedLocations]);
+  }, [savedLocations]); */
 
-  console.log("Chosen Location: ", chosenLocation);
+  // console.log("Chosen Location: ", chosenLocation);
   // console.log("saved locations: ", savedLocations);
 
   return (
-    <div className="app">
-      <Title isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
-      <Input
-        query={query}
-        setQuery={setQuery}
-        results={results}
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-        setChosenLocation={setChosenLocation}
-      />
-      <Loader isLoading={isLoading} />
-
-      <div className="locations">
-        {chosenLocation.id &&
-          (savedLocations.map((el) => el.id).includes(chosenLocation.id) ? (
-            <h3 className="existing-location">
-              This location is already saved below
-            </h3>
-          ) : (
-            <Weather
-              chosenLocation={chosenLocation}
-              setChosenLocation={setChosenLocation}
-              isCelsius={isCelsius}
-              savedLocations={savedLocations}
-              setSavedLocations={setSavedLocations}
-            />
-          ))}
-        {/* Saved locations */}
-        {savedLocations.toReversed().map((location) => (
-          <Weather
-            chosenLocation={location}
-            isCelsius={isCelsius}
-            savedLocations={savedLocations}
-            setSavedLocations={setSavedLocations}
-            key={location.id}
-          />
-        ))}
+    <WeatherProvider>
+      <div className="app">
+        <Title />
+        <Input />
+        <Loader />
+        <Locations />
       </div>
-    </div>
+    </WeatherProvider>
   );
 }

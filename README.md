@@ -38,6 +38,8 @@ Displays weather info for a location by fetching data from an API. You can add a
 14. ~~Fix wrong day bug. It thinks we're a day behind. It's because the formatDay helper function thinks the local date string is UTC. That's because we tell the meteo API our timezone, so it gives us local times, but then we feed this to formatDay that thinks it's UTC, so it gets the day of the week wrong. Apparently kludgy solution is to append T00:00 to date string going into formatDay.~~
 15. ~~Write generic objectSlice() helper function to slice arbitrary sections from API response object. Should be objectSlice(original_object, starting_index, num_elements). It should return new object with same shape & keys, but with sliced sub-arrays for all the properties. Need to use Object.keys() to iterate over array of all the keys and make the slices.~~
 16. ~~Change hourly icons when at night. Sun -> star or moon.~~
+17. Refactor code with context & reducer
+18. BUG: can't unpin saved location
 
 ## Future ideas
 
