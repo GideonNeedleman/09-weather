@@ -4,24 +4,17 @@ import { useWeather } from "../context/WeatherContext";
 import Day from "./Day";
 import Pin from "./Pin";
 
-function Weather({ location }) {
-  const { savedLocations, dispatch } = useWeather();
+function Weather({ location, isSaved = false }) {
+  const { dispatch } = useWeather();
   const [weather, setWeather] = useState({});
   const [displayName, setDisplayName] = useState("");
-  const [isPinned, setIsPinned] = useState("");
+  const [isPinned, setIsPinned] = useState(isSaved);
   const {
     temperature_2m_max: max,
     temperature_2m_min: min,
     time: dates,
     weathercode: codes,
   } = weather;
-
-  // check isPinned
-  useEffect(() => {
-    savedLocations.map((el) => el.id).includes(location.id)
-      ? setIsPinned(true)
-      : setIsPinned(false);
-  }, [location, savedLocations]);
 
   // set displayName
   useEffect(() => {
@@ -53,16 +46,10 @@ function Weather({ location }) {
     fetchWeather();
   }, [location]);
 
-  function pin() {
-    dispatch({ type: "location/pin" });
-  }
-
-  function unPin() {
-    dispatch({ type: "location/unpin", payload: location });
-  }
-
   function handlePin() {
-    !isPinned ? pin() : unPin();
+    !isPinned
+      ? dispatch({ type: "location/pin" })
+      : dispatch({ type: "location/unpin", payload: location });
     setIsPinned((prev) => !prev);
   }
 

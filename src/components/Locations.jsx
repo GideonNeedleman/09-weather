@@ -13,10 +13,10 @@ function Locations() {
             This location is already saved below
           </h3>
         ) : (
-          <Weather location={chosenLocation} />
+          <Weather location={chosenLocation} key={chosenLocation.id} />
         ))}
       {savedLocations.toReversed().map((location) => (
-        <Weather location={location} key={location.id} />
+        <Weather location={location} isSaved={true} key={location.id} />
       ))}
     </div>
   );
