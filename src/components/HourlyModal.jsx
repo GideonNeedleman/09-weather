@@ -10,7 +10,7 @@ var timezone = require("dayjs/plugin/timezone");
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-function HourlyModal({ isToday, date, location, isCelsius }) {
+function HourlyModal({ isToday, date, location }) {
   const [weather, setWeather] = useState({});
   const [timezone, setTimezone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +51,7 @@ function HourlyModal({ isToday, date, location, isCelsius }) {
           <ul className="modal-list">
             {time?.map((hour, i) =>
               // Filter out times before the current hour
-              // if (isToday && time hour >= new Date() hour) return;
+              // if (isToday && time hour >= current hour) return;
               !isToday ? (
                 <Hour
                   time={hour}
@@ -59,7 +59,6 @@ function HourlyModal({ isToday, date, location, isCelsius }) {
                   weathercode={weathercode.at(i)}
                   isDay={is_day.at(i)}
                   isToday={isToday}
-                  isCelsius={isCelsius}
                   timezone={timezone}
                   key={hour}
                 />
@@ -71,7 +70,6 @@ function HourlyModal({ isToday, date, location, isCelsius }) {
                     weathercode={weathercode.at(i)}
                     isDay={is_day.at(i)}
                     isToday={isToday}
-                    isCelsius={isCelsius}
                     timezone={timezone}
                     key={hour}
                   />

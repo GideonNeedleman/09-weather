@@ -5,7 +5,7 @@ import Day from "./Day";
 import Pin from "./Pin";
 
 function Weather({ location }) {
-  const { isCelsius, savedLocations, dispatch } = useWeather();
+  const { savedLocations, dispatch } = useWeather();
   const [weather, setWeather] = useState({});
   const [displayName, setDisplayName] = useState("");
   const [isPinned, setIsPinned] = useState("");
@@ -54,21 +54,11 @@ function Weather({ location }) {
   }, [location]);
 
   function pin() {
-    /*     if (savedLocations.includes(location)) {
-      alert("Location already pinned");
-      location({});
-      return;
-    } */
     dispatch({ type: "location/pin" });
   }
 
   function unPin() {
     dispatch({ type: "location/unpin", payload: location });
-    /*     savedLocations.length === 1
-      ? setSavedLocations([])
-      : setSavedLocations([
-          ...savedLocations.filter((el) => el.id !== location.id),
-        ]); */
   }
 
   function handlePin() {
@@ -93,7 +83,6 @@ function Weather({ location }) {
                 code={codes.at(i)}
                 key={date}
                 isToday={i === 0}
-                isCelsius={isCelsius}
                 location={location}
               />
             ))}

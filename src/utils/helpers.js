@@ -58,4 +58,14 @@ function objectSlice(object, start, numElements) {
   return newObject;
 }
 
-export { getWeatherIcon, convertToFlag, formatDay, objectSlice };
+function celsiusToFarenheit(temp) {
+  return (temp * 9) / 5 + 32;
+}
+
+export {
+  getWeatherIcon,
+  convertToFlag,
+  formatDay,
+  objectSlice,
+  celsiusToFarenheit,
+};

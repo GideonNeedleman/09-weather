@@ -1,21 +1,22 @@
 import { useState } from "react";
-import { formatDay, getWeatherIcon } from "../utils/helpers";
+import {
+  celsiusToFarenheit,
+  formatDay,
+  getWeatherIcon,
+} from "../utils/helpers";
 import HourlyModal from "./HourlyModal";
+import { useWeather } from "../context/WeatherContext";
 
-function Day({ date, max, min, code, isToday, isCelsius, location }) {
-  const minF = (min * 9) / 5 + 32;
-  const maxF = (max * 9) / 5 + 32;
+function Day({ date, max, min, code, isToday, location }) {
+  const minF = celsiusToFarenheit(min);
+  const maxF = celsiusToFarenheit(max);
   const [openModal, setOpenModal] = useState(false);
+  const { isCelsius } = useWeather();
 
   return (
     <li onClick={() => setOpenModal((prev) => !prev)}>
       {openModal && (
-        <HourlyModal
-          isToday={isToday}
-          date={date}
-          location={location}
-          isCelsius={isCelsius}
-        />
+        <HourlyModal isToday={isToday} date={date} location={location} />
       )}
       <div className="day">
         <span>{getWeatherIcon(code)}</span>
