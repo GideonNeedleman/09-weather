@@ -6,6 +6,7 @@
 .pnp.js
 /build
 build.zip
+api_key.js
 
 # testing
 /coverage

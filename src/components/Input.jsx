@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { useWeather } from "../context/WeatherContext";
 import Dropdown from "./Dropdown";
+import GpsButton from "./GpsButton";
 
 function Input() {
   const { query, results, isVisible, dispatch } = useWeather();
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
     <div className="inputContainer">
+      {!isPressed && <GpsButton setIsPressed={setIsPressed} />}
+
       <input
         type="text"
         placeholder="Enter location..."
@@ -16,6 +21,7 @@ function Input() {
           dispatch({ type: "query/change", payload: e.target.value })
         }
       />
+
       {results.length > 1 && query.length > 2 && (
         <button
           className="btn-more"
@@ -28,6 +34,7 @@ function Input() {
           )}
         </button>
       )}
+
       {isVisible && <Dropdown />}
     </div>
   );
