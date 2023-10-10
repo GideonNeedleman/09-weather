@@ -15,9 +15,9 @@ B0D7FF */
   box-sizing: border-box;
 }
 
-html {
-  /* font-size: 62.5%; */
-}
+/* html {
+  font-size: 62.5%;
+} */
 
 body {
   font-family: "Noto Sans", "Noto Color Emoji", sans-serif;
@@ -39,27 +39,28 @@ body {
   outline-offset: 1.2rem; */
 }
 
-h1 {
+.title {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 1.25rem;
 }
 
 input {
   font-family: inherit;
   text-align: center;
   color: inherit;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #b0d7ff;
   padding: 1rem;
   border: none;
   border-radius: 1rem;
-  width: 32rem;
+  width: 22rem;
   margin-bottom: 1rem;
 }
 
@@ -67,19 +68,32 @@ input:focus {
   outline: 2px solid #2d3142;
 }
 
+.existing-location {
+  text-align: center;
+}
+
+.weather-container {
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
 .weather {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .day {
   background-color: #d8d5db;
-  padding: 1rem 0 1rem;
-  width: 6rem;
+  padding: 0.25rem 2rem 0.25rem;
+  width: 22rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   cursor: pointer;
@@ -87,7 +101,7 @@ input:focus {
 }
 
 .day span {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 .day.important {
@@ -107,7 +121,7 @@ input:focus {
 .btn-more {
   position: absolute;
   right: 8px;
-  top: 12px;
+  top: 8px;
   height: 3rem;
   width: 3rem;
   border-radius: 1rem;
@@ -122,86 +136,148 @@ input:focus {
   border-radius: 0.5rem;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 
 .dropdownItem {
   cursor: pointer;
-  background-color: #cde5fd;
-  margin: 6px;
+  /* background-color: #ffffff99; */
+  padding: 0.25rem;
+  box-shadow: inset 0px 2px 5px 6px rgba(255, 255, 255, 0.151);
 }
 
-#pin {
+.dropdownItem:hover {
+  color: #1b00b3;
+  font-weight: bold;
+}
+
+.pin {
+  position: relative;
+  margin-bottom: 0.5rem;
+  /* top: 3.5rem; */
+}
+
+.checkbox {
   width: 1rem;
 }
 #degrees {
   width: 1rem;
 }
 
-.switch {
-  text-align: right;
+header {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0 2rem 0;
+  max-width: 1024px;
 }
 
-/* Toggle Switch */
+.locations {
+  overflow: auto;
+  margin-bottom: 1rem;
+}
 
-.toggle-switch {
-  border: 1px solid;
-  border-radius: 100px;
+.hourly-modal .modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*   width: 100vw;
+  height: 100vh; */
+  z-index: 100;
+}
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.582);
   display: flex;
-  gap: 10px;
-  padding: 4px;
-  position: relative;
-  width: 64px;
-}
-
-.toggle-switch .frame {
   align-items: center;
-  background-color: #ffffff;
-  border-radius: 19px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 24px;
   justify-content: center;
-  padding: 10px;
-  position: relative;
-  width: 24px;
+}
+.modal-content {
+  max-width: 25rem;
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem 0;
+  border-radius: 1rem;
+  max-height: 80vh;
+  overflow-y: scroll;
 }
 
-.toggle-switch .f {
-  color: #000000;
-  font-family: "Lato", Helvetica;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-bottom: -6.5px;
-  margin-top: -8.5px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
+.modal-list li:nth-child(even) {
+  background-color: rgb(255, 236, 210);
 }
 
-.toggle-switch.celsius {
+.hour-card {
+  list-style: none;
+  display: flex;
   align-items: center;
-  background-color: #25b1b9;
-  border-color: #31e7f3;
-  justify-content: flex-end;
+  gap: 3rem;
+  padding: 0 2rem;
 }
 
-.toggle-switch.farenheit {
-  align-items: flex-start;
-  background-color: #cf8f44;
-  border-color: #ffb35a;
+.hour-icon {
+  font-size: 2rem;
 }
 
-.toggle-switch.celsius .f {
-  margin-left: -7px;
-  margin-right: -7px;
+.hour-temp {
+  font-weight: bold;
 }
 
-.toggle-switch.farenheit .f {
-  margin-left: -6px;
-  margin-right: -6px;
+.hour-time {
+  text-align: right;
+  width: 41px;
 }
 
-/* end toggle switch */
+@media screen and (min-width: 500px) {
+  input {
+    width: 28rem;
+  }
+
+  .day {
+    width: 25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 660px) {
+  input {
+    width: 32rem;
+    font-size: 2rem;
+  }
+
+  .btn-more {
+    top: 12px;
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .weather {
+    flex-direction: row;
+  }
+
+  .day {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 5rem;
+    padding: 1rem 0 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .weather {
+    gap: 1.5rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .day {
+    width: 6rem;
+  }
+
+  .day span {
+    font-size: 4rem;
+  }
+}

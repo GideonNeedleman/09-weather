@@ -1,47 +1,79 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { convertToFlag } from "../utils/helpers";
+import { useWeather } from "../context/WeatherContext";
 import Day from "./Day";
+import Pin from "./Pin";
 
-function Weather({
-  weather,
-  displayLocation,
-  location,
-  isCelsius,
-  savedLocations,
-  setSavedLocations,
-}) {
-  const [isPinned, setIsPinned] = useState(false);
+function Weather({ location }) {
+  const { savedLocations, dispatch } = useWeather();
+  const [weather, setWeather] = useState({});
+  const [displayName, setDisplayName] = useState("");
+  const [isPinned, setIsPinned] = useState("");
   const {
     temperature_2m_max: max,
     temperature_2m_min: min,
     time: dates,
     weathercode: codes,
   } = weather;
-  console.log(weather);
+
+  // check isPinned
+  useEffect(() => {
+    savedLocations.map((el) => el.id).includes(location.id)
+      ? setIsPinned(true)
+      : setIsPinned(false);
+  }, [location, savedLocations]);
+
+  // set displayName
+  useEffect(() => {
+    location.admin1
+      ? setDisplayName(
+          `${location.name}, ${location.admin1} ${convertToFlag(
+            location.country_code
+          )}`
+        )
+      : setDisplayName(
+          `${location.name} ${convertToFlag(location.country_code)}`
+        );
+  }, [location]);
+
+  // fetchWeather
+  useEffect(() => {
+    async function fetchWeather() {
+      const { latitude, longitude, timezone } = location;
+      try {
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
+        );
+        const weatherData = await weatherRes.json();
+        setWeather(weatherData.daily);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchWeather();
+  }, [location]);
+
+  function pin() {
+    dispatch({ type: "location/pin" });
+  }
+
+  function unPin() {
+    dispatch({ type: "location/unpin", payload: location });
+  }
 
   function handlePin() {
-    !isPinned
-      ? setSavedLocations(location)
-      : setSavedLocations(
-          ...savedLocations.filter((el) => el.id !== location.id)
-        );
+    !isPinned ? pin() : unPin();
     setIsPinned((prev) => !prev);
   }
+
   return (
     <>
-      {displayLocation.length > 2 && (
-        <div>
+      {displayName.length > 2 && (
+        <div className="weather-container">
+          <h2>Forecast for {displayName}</h2>
           <div className="pin">
-            <input
-              type="checkbox"
-              name="pin"
-              id="pin"
-              checked={isPinned}
-              value={isPinned}
-              onChange={handlePin}
-            />
-            <label htmlFor="pin">pin</label>
+            <Pin id={location.id} isPinned={isPinned} handlePin={handlePin} />
           </div>
-          <h2>Forecast for {displayLocation}</h2>
           <ul className="weather">
             {dates?.map((date, i) => (
               <Day
@@ -51,7 +83,7 @@ function Weather({
                 code={codes.at(i)}
                 key={date}
                 isToday={i === 0}
-                isCelsius={isCelsius}
+                location={location}
               />
             ))}
           </ul>
