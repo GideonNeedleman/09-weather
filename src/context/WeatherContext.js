@@ -71,7 +71,7 @@ const initialState = {
   chosenLocation: {},
   savedLocations: JSON.parse(localStorage.getItem("savedLocations")) || [],
   isLoading: false,
-  isVisible: false,
+  isVisible: false, //is Dropdown menu visible
   isCelsius: JSON.parse(localStorage.getItem("isCelsius")) || false,
 };
 

@@ -68,6 +68,10 @@ input:focus {
   outline: 2px solid #2d3142;
 }
 
+.existing-location {
+  text-align: center;
+}
+
 .weather-container {
   padding: 0 1rem;
   margin-bottom: 1rem;
