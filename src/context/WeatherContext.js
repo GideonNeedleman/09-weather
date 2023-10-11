@@ -106,7 +106,6 @@ function WeatherProvider({ children }) {
       try {
         dispatch({ type: "loading/start" });
 
-        // 1) Getting location (geocoding)
         const geoRes = await fetch(
           `https://geocoding-api.open-meteo.com/v1/search?name=${query}`
         );
@@ -115,8 +114,6 @@ function WeatherProvider({ children }) {
         if (!geoData.results) throw new Error("Location not found");
 
         dispatch({ type: "location/loaded", payload: geoData });
-
-        // 2) Getting actual weather
       } catch (err) {
         console.error(err);
       } finally {

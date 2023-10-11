@@ -25,15 +25,15 @@ function GpsButton() {
       const data = await res.json();
       dispatch({ type: "loading/stop" });
 
-      const location = {};
-      location.name = data.features[0].properties.city;
-      location.admin1 = data.features[0].properties.state;
-      location.country_code =
-        data.features[0].properties.country_code.toUpperCase();
-      location.latitude = position.lat;
-      location.longitude = position.lng;
-      location.timezone = data.features[0].properties.timezone.name;
-      location.id = data.features[0].properties.plus_code_short;
+      const location = {
+        name: data.features[0].properties.city,
+        admin1: data.features[0].properties.state,
+        country_code: data.features[0].properties.country_code.toUpperCase(),
+        latitude: position.lat,
+        longitude: position.lng,
+        timezone: data.features[0].properties.timezone.name,
+        id: data.features[0].properties.plus_code_short,
+      };
       dispatch({ type: "location/gpsload", payload: location });
 
       console.log(data);
