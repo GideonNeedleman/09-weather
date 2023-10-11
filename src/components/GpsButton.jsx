@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import api_key from "../api_key";
 import { useWeather } from "../context/WeatherContext";
 import { useGPS } from "../hooks/useGPS";
 
 function GpsButton() {
   const apikey = api_key();
-  const { isLoading, position, error, getPosition } = useGPS();
+  const { isLoading, position, getPosition } = useGPS();
   const { dispatch } = useWeather();
 
   // trigger Loader
