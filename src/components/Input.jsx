@@ -1,11 +1,14 @@
 import { useWeather } from "../context/WeatherContext";
 import Dropdown from "./Dropdown";
+import GpsButton from "./GpsButton";
 
 function Input() {
-  const { query, results, isVisible, dispatch } = useWeather();
+  const { query, results, isVisible, gpsUsed, dispatch } = useWeather();
 
   return (
     <div className="inputContainer">
+      {!gpsUsed && <GpsButton />}
+
       <input
         type="text"
         placeholder="Enter location..."
@@ -16,6 +19,7 @@ function Input() {
           dispatch({ type: "query/change", payload: e.target.value })
         }
       />
+
       {results.length > 1 && query.length > 2 && (
         <button
           className="btn-more"
@@ -28,6 +32,7 @@ function Input() {
           )}
         </button>
       )}
+
       {isVisible && <Dropdown />}
     </div>
   );

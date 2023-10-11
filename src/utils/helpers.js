@@ -58,7 +58,7 @@ function objectSlice(object, start, numElements) {
   return newObject;
 }
 
-function celsiusToFarenheit(temp) {
+function celsiusToFahrenheit(temp) {
   return (temp * 9) / 5 + 32;
 }
 
@@ -67,5 +67,5 @@ export {
   convertToFlag,
   formatDay,
   objectSlice,
-  celsiusToFarenheit,
+  celsiusToFahrenheit,
 };
