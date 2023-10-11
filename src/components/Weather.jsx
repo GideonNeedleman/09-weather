@@ -53,6 +53,8 @@ function Weather({ location, isSaved = false }) {
     setIsPinned((prev) => !prev);
   }
 
+  console.log("weather component");
+
   return (
     <>
       {displayName.length > 2 && (

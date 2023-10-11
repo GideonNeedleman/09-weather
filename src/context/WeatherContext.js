@@ -35,6 +35,7 @@ function reducer(state, action) {
         ...state,
         query: action.payload,
         isVisible: false,
+        gpsUsed: state.query.length === 0 ? false : state.gpsUsed,
       };
     case "location/set":
       return {
@@ -60,6 +61,12 @@ function reducer(state, action) {
                 ),
               ],
       };
+    case "location/gpsload":
+      return {
+        ...state,
+        gpsUsed: true,
+        chosenLocation: action.payload,
+      };
     default:
       throw new Error("unknown action type");
   }
@@ -73,6 +80,7 @@ const initialState = {
   isLoading: false,
   isVisible: false, //is Dropdown menu visible
   isCelsius: JSON.parse(localStorage.getItem("isCelsius")) || false,
+  gpsUsed: false,
 };
 
 function WeatherProvider({ children }) {
@@ -85,6 +93,7 @@ function WeatherProvider({ children }) {
       isLoading,
       isVisible,
       isCelsius,
+      gpsUsed,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -138,6 +147,7 @@ function WeatherProvider({ children }) {
         isLoading,
         isVisible,
         isCelsius,
+        gpsUsed,
 
         dispatch,
       }}

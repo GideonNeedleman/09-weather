@@ -1,15 +1,13 @@
-import { useState } from "react";
 import { useWeather } from "../context/WeatherContext";
 import Dropdown from "./Dropdown";
 import GpsButton from "./GpsButton";
 
 function Input() {
-  const { query, results, isVisible, dispatch } = useWeather();
-  const [isPressed, setIsPressed] = useState(false);
+  const { query, results, isVisible, gpsUsed, dispatch } = useWeather();
 
   return (
     <div className="inputContainer">
-      {!isPressed && <GpsButton setIsPressed={setIsPressed} />}
+      {!gpsUsed && <GpsButton />}
 
       <input
         type="text"

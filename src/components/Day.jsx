@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  celsiusToFarenheit,
+  celsiusToFahrenheit,
   formatDay,
   getWeatherIcon,
 } from "../utils/helpers";
@@ -8,8 +8,8 @@ import HourlyModal from "./HourlyModal";
 import { useWeather } from "../context/WeatherContext";
 
 function Day({ date, max, min, code, isToday, location }) {
-  const minF = celsiusToFarenheit(min);
-  const maxF = celsiusToFarenheit(max);
+  const minF = celsiusToFahrenheit(min);
+  const maxF = celsiusToFahrenheit(max);
   const [openModal, setOpenModal] = useState(false);
   const { isCelsius } = useWeather();
 
