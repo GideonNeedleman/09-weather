@@ -35,7 +35,7 @@ function reducer(state, action) {
         ...state,
         query: action.payload,
         isVisible: false,
-        gpsUsed: state.query.length === 0 ? false : state.gpsUsed,
+        gpsUsed: false,
       };
     case "location/set":
       return {
