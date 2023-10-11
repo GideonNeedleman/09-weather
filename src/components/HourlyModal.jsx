@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { formatDay, objectSlice } from "../utils/helpers";
 import Hour from "./Hour";
-import Loader from "./Loader";
 import dayjs from "dayjs";
 
 // setup Day.js library with timezone plugin
