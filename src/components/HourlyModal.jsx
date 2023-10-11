@@ -47,7 +47,7 @@ function HourlyModal({ isToday, date, location }) {
       <div className="modal-overlay">
         <div className="modal-content">
           <h2>{dayName}</h2>
-          {<Loader isLoading={isLoading} />}
+          {isLoading && <p className="loader">Loading...</p>}
           <ul className="modal-list">
             {time?.map((hour, i) =>
               // Filter out times before the current hour

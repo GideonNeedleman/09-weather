@@ -2,12 +2,6 @@ import dayjs from "dayjs";
 import { getWeatherIcon, celsiusToFahrenheit } from "../utils/helpers";
 import { useWeather } from "../context/WeatherContext";
 
-// setup Day.js library with timezone plugin
-var utc = require("dayjs/plugin/utc");
-var timezone = require("dayjs/plugin/timezone");
-dayjs.extend(utc);
-dayjs.extend(timezone);
-
 function Hour({ time, temp, weathercode, isDay }) {
   const tempC = Math.round(temp);
   const tempF = Math.round(celsiusToFahrenheit(temp));
